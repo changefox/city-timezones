@@ -7,7 +7,7 @@ npm install city-timezones
 ```
 
 ```javascript
-var cityTimezones = require('city-timezones');
+var cityTimezones = require("city-timezones");
 ```
 
 ### cityTimezones.lookupViaCity(city: string)
@@ -16,25 +16,63 @@ If a city is found, returns an **array** of possible matches with city, state, l
 A U.S. based city will contain a `state_ansi` property which is the abbreviated form of a US State [ANSI State Table](https://www.census.gov/geo/reference/ansi_statetables.html)
 
 finding based on city name of Chicago (case insensitive):
+
 ```javascript
-const cityLookup = cityTimezones.lookupViaCity('Chicago')
-console.log(cityLookup)
+const cityLookup = cityTimezones.lookupViaCity("Chicago");
+console.log(cityLookup);
 ```
+
 Will return:
+
 ```javascript
-[ { city: 'Chicago',
-    city_ascii: 'Chicago',
+[
+  {
+    city: "Chicago",
+    city_ascii: "Chicago",
     lat: 41.82999066,
     lng: -87.75005497,
     pop: 5915976,
-    country: 'United States of America',
-    iso2: 'US',
-    iso3: 'USA',
-    province: 'Illinois',
-    exactCity: 'Chicago',
-    exactProvince: 'IL',
-    state_ansi: 'IL',
-    timezone: 'America/Chicago' } ]
+    country: "United States of America",
+    iso2: "US",
+    iso3: "USA",
+    province: "Illinois",
+    exactCity: "Chicago",
+    exactProvince: "IL",
+    state_ansi: "IL",
+    timezone: "America/Chicago",
+  },
+];
+```
+
+### cityTimezones.lookupViaId(id: string)
+
+If a city is found, returns an **object** with city, state, lat, lng, timezone. Returns an `null` value if nothing matches.
+
+finding based on id of Chicago (case insensitive):
+
+```javascript
+const idLookup = cityTimezones.lookupViaId(
+  "32f8096f-c36c-4b72-8d27-0d81a642d5c0"
+);
+console.log(idLookup);
+```
+
+Will return:
+
+```javascript
+{
+    city: "Adelaide",
+    city_ascii: "Adelaide",
+    lat: -34.93498777,
+    lng: 138.6000048,
+    pop: 990677,
+    country: "Australia",
+    iso2: "AU",
+    iso3: "AUS",
+    province: "South Australia",
+    timezone: "Australia/Adelaide",
+    id: "32f8096f-c36c-4b72-8d27-0d81a642d5c0"
+}
 ```
 
 ### cityTimezones.findFromCityStateProvince(searchString: string)
@@ -42,23 +80,30 @@ Will return:
 This method will return any partial match for the search term based on city, province, or country, or a combination thereof. A U.S. based city will also return matches for the `state_ansi` property.
 
 finding based on search term of Springfield MO
+
 ```javascript
-const cityLookup = cityTimezones.findFromCityStateProvince('springfield mo')
-console.log(cityLookup)
+const cityLookup = cityTimezones.findFromCityStateProvince("springfield mo");
+console.log(cityLookup);
 ```
+
 Will return:
+
 ```javascript
-[ { city: 'Springfield',
-    city_ascii: 'Springfield',
+[
+  {
+    city: "Springfield",
+    city_ascii: "Springfield",
     lat: 37.18001609,
     lng: -93.31999923,
     pop: 180691,
-    country: 'United States of America',
-    iso2: 'US',
-    iso3: 'USA',
-    province: 'Missouri',
-    state_ansi: 'MO',
-    timezone: 'America/Chicago' } ]	
+    country: "United States of America",
+    iso2: "US",
+    iso3: "USA",
+    province: "Missouri",
+    state_ansi: "MO",
+    timezone: "America/Chicago",
+  },
+];
 ```
 
 ### cityTimezones.cityMapping
@@ -66,10 +111,12 @@ Will return:
 This array will contain the full list of all available cities.
 
 ```javascript
-const cityMapping = cityTimezones.cityMapping
-console.log(cityMapping)
+const cityMapping = cityTimezones.cityMapping;
+console.log(cityMapping);
 ```
+
 Will return:
+
 ```javascript
 [
   {
@@ -97,5 +144,5 @@ Will return:
     "timezone": "Asia/Kabul"
   },
   ...
-]	
+]
 ```
