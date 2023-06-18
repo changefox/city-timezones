@@ -25,6 +25,14 @@ declare module "city-timezones" {
   export function lookupViaCity(input: string): CityData[];
 
   /**
+   * Search for city info by searching by city id.
+   *
+   * @param input City id.
+   * @returns A single city record from an id.
+   */
+  export function lookupViaId(input: string): CityData[];
+
+  /**
    * Search for city info by searching a state or province name I.E. Springfield MO
    *
    * @param input State or province name.
