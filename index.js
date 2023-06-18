@@ -17,7 +17,7 @@ function lookupViaId(id) {
   const cityLookup = _.find(cityMapping, function (o) {
     return o.id === id;
   });
-  if (cityLookup && cityLookup.length) {
+  if (cityLookup) {
     return cityLookup;
   } else {
     return null;
